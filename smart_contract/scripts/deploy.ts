@@ -1,4 +1,5 @@
 import { network } from "hardhat";
+import assert from "assert";
 
 // const { ethers } = await network.connect({
 //   network: "hardhatOp",
@@ -44,9 +45,15 @@ const main = async () =>
 
   console.log("Deploying contract with the account:", deployer.address);
 
+  // const balance = await ethers.provider.getBalance(deployer.address);
+
+  // // console.log("Account balance:", balance.toString());
+
+  // assert(balance > 0, "Not enough balance");
+
   const Factory = await ethers.getContractFactory("Transactions");
-  const transactions = await Factory.deploy();
-  console.log("Transactions : ",await transactions.getAddress);
+  const Transactions = await Factory.deploy();
+  console.log("Transactions : ",await Transactions.getAddress());
 
   // await transactions.deployed();
 
