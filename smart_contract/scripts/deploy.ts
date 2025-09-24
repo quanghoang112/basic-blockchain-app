@@ -45,11 +45,11 @@ const main = async () =>
 
   console.log("Deploying contract with the account:", deployer.address);
 
-  // const balance = await ethers.provider.getBalance(deployer.address);
+  const balance = await ethers.provider.getBalance(deployer.address);
 
-  // // console.log("Account balance:", balance.toString());
+  // console.log("Account balance:", balance.toString());
 
-  // assert(balance > 0, "Not enough balance");
+  assert(balance > 0, "Not enough balance");
 
   const Factory = await ethers.getContractFactory("Transactions");
   const Transactions = await Factory.deploy();
