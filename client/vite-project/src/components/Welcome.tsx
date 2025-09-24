@@ -30,17 +30,19 @@ const Input =({placeholder,name,type, value, handleChange}: InputProps) =>(
 
 const Welcome = () => {
 
-    const { connectWallet } =useContext(TransactionContext);
+    const { connectWallet,currentAccount,formData,setformData,handleChange,sendTransaction } =useContext(TransactionContext);
 
-    // const handleSubmit = (e : React.ChangeEvent<HTMLInputElement>) => {
-    //     const { addressTo, amount, keyword, message } = formData;
+    // e : React.ChangeEvent<HTMLInputElement>
 
-    //     e.preventDefault();
+    const handleSubmit  = async (e: any) => {
+        const { addressTo, amount, keyword, message } = formData;
 
-    //     if (!addressTo || !amount || !keyword || !message) return;
+        e.preventDefault();
 
-    //     sendTransaction();
-    // };
+        if (!addressTo || !amount || !keyword || !message) return;
+
+        sendTransaction();
+    };
     return (
         // <h1>Welcome</h1>
         <div className="flex w-full justify-center items-center">
@@ -52,13 +54,15 @@ const Welcome = () => {
                     <p className="text-left mt-5 text-white font-light md:w-9/12 w-11/12 text-base">
                         Explore the crypto workd. Buy and sell crpytocurrencies easily on ....
                     </p>
-                    <button
-                        type="button"
-                        onClick={connectWallet}
-                        className="flex flex-row justify-center items-center my-5 bg-[#2952e3] p-3 rounded-full cursor-pointer hover:bg-[#2546bd]"
-                    >
-                        <p className="text-white text-base font-semibold">Connect Wallet</p>
-                    </button>
+                    { !currentAccount && (
+                        <button
+                            type="button"
+                            onClick={connectWallet}
+                            className="flex flex-row justify-center items-center my-5 bg-[#2952e3] p-3 rounded-full cursor-pointer hover:bg-[#2546bd]"
+                        >
+                            <p className="text-white text-base font-semibold">Connect Wallet</p>
+                        </button>
+                    )}
 
                     <div className="grid sm:grid-cols-3 grid-cols-2-full w-full mt-10">
                         <div className={`rounded-tl-2xl ${commonStyle}`}>
@@ -112,10 +116,10 @@ const Welcome = () => {
                     </div>
 
                     <div className="p-5 sm:w-96 w-full flex flex-col justify-start items-center blue-glassmorphism">
-                        <Input placeholder="Address To" name="addressTo" type="text" handleChange={()=>{}} />
-                        <Input placeholder="Amount (ETH)" name="amount" type="number" handleChange={()=>{}} />
-                        <Input placeholder="Keyword (Gif)" name="keyword" type="text" handleChange={()=>{}} />
-                        <Input placeholder="Enter Message" name="message" type="text" handleChange={()=>{}} />
+                        <Input placeholder="Address To" name="addressTo" type="text" handleChange={handleChange} />
+                        <Input placeholder="Amount (ETH)" name="amount" type="number" handleChange={handleChange} />
+                        <Input placeholder="Keyword (Gif)" name="keyword" type="text" handleChange={handleChange} />
+                        <Input placeholder="Enter Message" name="message" type="text" handleChange={handleChange} />
                     
                         <div className="h-[1px] w-full bg-gray-400 my-2">
 
@@ -125,7 +129,7 @@ const Welcome = () => {
                             : (
                                 <button
                                 type="button"
-                                onClick={()=>{}}
+                                onClick={handleSubmit}
                                 className="text-white w-full mt-2 border-[1px] p-2 border-[#3d4f7c] hover:bg-[#3d4f7c] rounded-full cursor-pointer"
                                 >
                                 Send now
