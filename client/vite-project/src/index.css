@@ -1,8 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap");
 @import "tailwindcss";
+* html {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 
+body {
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
 .gradient-bg-welcome {
-  /* width: 80vw; */
   background-color:#0f0e13;
   background-image: 
     radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), 
@@ -17,6 +28,20 @@
     radial-gradient(at 50% 100%, hsla(225,39%,25%,1) 0, transparent 50%);
 }
 
+.gradient-bg-transactions {
+  background-color: #0f0e13;
+  background-image: 
+    radial-gradient(at 0% 100%, hsla(253,16%,7%,1) 0, transparent 50%), 
+    radial-gradient(at 50% 0%, hsla(225,39%,25%,1) 0, transparent 50%);
+}
+
+.gradient-bg-footer {
+  background-color: #0f0e13;
+  background-image: 
+    radial-gradient(at 0% 100%, hsla(253,16%,7%,1) 0, transparent 53%), 
+    radial-gradient(at 50% 150%, hsla(339,49%,30%,1) 0, transparent 50%);
+}
+
 .blue-glassmorphism {
   background: rgb(39, 51, 89, 0.4);
   border-radius: 16px;
@@ -26,6 +51,7 @@
   border: 1px solid rgba(0, 0, 0, 0.3);
 }
 
+/* white glassmorphism */
 .white-glassmorphism {
   background: rgba(255, 255, 255, 0.05);
   border-radius: 16px;
@@ -53,50 +79,6 @@
   -webkit-text-fill-color: transparent;
 }
 
-
-h1 {
-  /* font-size: 3.2em;
-  line-height: 1.1;
-  place-items: start;
-  font-weight: 700; */
-  color: white;
-}
-
-
-/* button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-} */
-
-/* @media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-} */
-
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
